@@ -1,334 +1,474 @@
-export default function AnalysisDetailPage() {
-  return (
-    <>
-      
-{/* Sidebar Navigation */}
-<aside className="h-screen w-64 fixed left-0 top-0 flex flex-col bg-[#161c25] shadow-2xl shadow-black/40 z-50">
-<div className="flex flex-col h-full py-6 space-y-4">
-{/* Header/Logo Area */}
-<div className="px-6 mb-8">
-<div className="flex items-center gap-3 cursor-pointer" >
-<div className="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
-<span className="material-symbols-outlined text-on-primary text-2xl" data-icon="terminal">terminal</span>
-</div>
-<div>
-<h1 className="font-['Space_Grotesk'] font-bold text-[#55d8e1] text-lg leading-tight uppercase">Wistletoe</h1>
-<p className="text-[10px] text-on-surface-variant tracking-widest uppercase">v2.4.0-stable</p>
-</div>
-</div>
-</div>
-{/* Navigation Links */}
-<nav className="flex-1 space-y-1 px-3">
-<div className="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33]/30 hover:text-[#dde3ef] transition-all duration-150 ease-in-out cursor-pointer group" >
-<span className="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
-<span className="font-['Inter'] text-[13px]">Dashboard</span>
-</div>
-<div className="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33]/30 hover:text-[#dde3ef] transition-all duration-150 ease-in-out cursor-pointer group" >
-<span className="material-symbols-outlined text-xl" data-icon="folder">folder</span>
-<span className="font-['Inter'] text-[13px]">Repositories</span>
-</div>
-<div className="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33]/30 hover:text-[#dde3ef] transition-all duration-150 ease-in-out cursor-pointer group" >
-<span className="material-symbols-outlined text-xl" data-icon="history">history</span>
-<span className="font-['Inter'] text-[13px]">History</span>
-</div>
-<div className="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33]/30 hover:text-[#dde3ef] transition-all duration-150 ease-in-out cursor-pointer group" >
-<span className="material-symbols-outlined text-xl" data-icon="settings">settings</span>
-<span className="font-['Inter'] text-[13px]">Settings</span>
-</div>
-</nav>
-{/* CTA */}
-<div className="px-6 mt-auto">
-<button className="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold py-2.5 rounded-md text-[13px] active:scale-95 transition-transform">
-                    New Analysis
-                </button>
-</div>
-{/* Footer Links */}
-<div className="px-3 pt-4 border-t border-outline-variant/10">
-<div className="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:text-[#dde3ef] transition-all text-[12px] cursor-pointer" >
-<span className="material-symbols-outlined text-lg" data-icon="description">description</span>
-<span>Documentation</span>
-</div>
-<div className="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:text-[#dde3ef] transition-all text-[12px] cursor-pointer" >
-<span className="material-symbols-outlined text-lg" data-icon="help">help</span>
-<span>Support</span>
-</div>
-</div>
-</div>
-</aside>
-{/* Main Content Area */}
-<main className="ml-64 min-h-screen bg-background p-8 md:p-12">
-{/* Header */}
-<header className="mb-12">
-<div className="flex items-center gap-2 text-on-surface-variant text-sm mb-2 font-medium">
-<span className="cursor-pointer hover:text-primary transition-colors" >Repositories</span>
-<span className="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
-<span className="cursor-pointer hover:text-primary transition-colors" >Wistletoe</span>
-<span className="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
-<span className="text-primary">Feature Analysis</span>
-</div>
-<div className="flex justify-between items-end">
-<div>
-<h2 className="text-4xl font-headline font-bold text-on-surface tracking-tight">Feature Analysis: Wistletoe Refactor</h2>
-<p className="text-on-surface-variant mt-2 max-w-2xl text-lg">Detailed deep-dive into high-latency modules and architectural debt identified in the v2.4.0-stable release cycle.</p>
-</div>
-<div className="flex gap-3">
-<button className="px-4 py-2 bg-surface-container-high text-on-surface rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors text-sm">
-<span className="material-symbols-outlined text-lg" data-icon="share">share</span>
-                        Share Report
-                    </button>
-<button className="px-4 py-2 bg-surface-container-high text-on-surface rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors text-sm">
-<span className="material-symbols-outlined text-lg" data-icon="download">download</span>
-                        Export PDF
-                    </button>
-</div>
-</div>
-</header>
-{/* Summary Cards Grid */}
-<section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-{/* Risk Level Card */}
-<div className="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
-<div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span className="material-symbols-outlined text-6xl text-error" data-icon="warning" >warning</span>
-</div>
-<p className="text-on-surface-variant text-xs font-semibold tracking-wider uppercase mb-4">Risk Level</p>
-<div className="flex items-baseline gap-2">
-<h3 className="text-3xl font-headline font-bold text-error">High</h3>
-<span className="text-xs text-on-surface-variant">Critical Path Impact</span>
-</div>
-<div className="mt-4 w-full bg-surface-container-lowest h-1.5 rounded-full">
-<div className="bg-error h-full w-[85%] rounded-full shadow-[0_0_8px_rgba(255,180,171,0.5)]"></div>
-</div>
-</div>
-{/* Effort Card */}
-<div className="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
-<div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span className="material-symbols-outlined text-6xl text-primary" data-icon="timer" >timer</span>
-</div>
-<p className="text-on-surface-variant text-xs font-semibold tracking-wider uppercase mb-4">Estimated Effort</p>
-<div className="flex items-baseline gap-2">
-<h3 className="text-3xl font-headline font-bold text-primary">40-60 hrs</h3>
-<span className="text-xs text-on-surface-variant">Dev cycles</span>
-</div>
-<div className="mt-4 w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden flex">
-<div className="bg-primary h-full w-[60%] border-r border-background"></div>
-<div className="bg-primary/40 h-full w-[20%]"></div>
-</div>
-</div>
-{/* Cost Card */}
-<div className="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
-<div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span className="material-symbols-outlined text-6xl text-tertiary" data-icon="payments" >payments</span>
-</div>
-<p className="text-on-surface-variant text-xs font-semibold tracking-wider uppercase mb-4">Projected Cost</p>
-<div className="flex items-baseline gap-2">
-<h3 className="text-3xl font-headline font-bold text-on-surface">$2,500</h3>
-<span className="text-xs text-on-surface-variant">USD / Analysis</span>
-</div>
-<div className="mt-4 text-xs flex items-center gap-1 text-tertiary">
-<span className="material-symbols-outlined text-[14px]" data-icon="info">info</span>
-                    Includes infrastructure overhead
-                </div>
-</div>
-</section>
-{/* Visualization Section (Asymmetric) */}
-<section className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
-{/* Impact Visualization (Radar/Hex) */}
-<div className="lg:col-span-8 bg-surface-container-low p-8 rounded-xl min-h-[400px] flex flex-col">
-<div className="flex justify-between items-start mb-10">
-<div>
-<h4 className="text-xl font-headline font-bold text-on-surface">Impact Visualization</h4>
-<p className="text-sm text-on-surface-variant">Multi-dimensional analysis of feature refraction</p>
-</div>
-<div className="flex gap-4">
-<div className="flex items-center gap-2 text-xs">
-<span className="w-2 h-2 rounded-full bg-primary"></span> Current
-                        </div>
-<div className="flex items-center gap-2 text-xs">
-<span className="w-2 h-2 rounded-full bg-secondary opacity-40"></span> Target
-                        </div>
-</div>
-</div>
-{/* Mock Radar Chart Layout */}
-<div className="flex-1 flex items-center justify-center relative">
-{/* Geometric Radar Pattern */}
-<div className="w-64 h-64 border-2 border-outline-variant/10 rounded-full flex items-center justify-center">
-<div className="w-48 h-48 border-2 border-outline-variant/10 rounded-full flex items-center justify-center">
-<div className="w-32 h-32 border-2 border-outline-variant/10 rounded-full"></div>
-</div>
-{/* Hexagon Paths */}
-<svg className="absolute inset-0 w-full h-full opacity-80" viewBox="0 0 100 100">
-{/* Background Grid */}
-<path className="text-outline-variant" d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" stroke="currentColor" strokeWidth="0.2"></path>
-<path className="text-outline-variant" d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="none" stroke="currentColor" strokeWidth="0.2"></path>
-{/* Data Path Primary */}
-<path className="text-primary" d="M50 15 L85 30 L70 70 L50 85 L20 60 L30 25 Z" fill="rgba(85, 216, 225, 0.2)" stroke="currentColor" strokeWidth="1.5"></path>
-<circle className="text-primary" cx="50" cy="15" fill="currentColor" r="1.5"></circle>
-<circle className="text-primary" cx="85" cy="30" fill="currentColor" r="1.5"></circle>
-<circle className="text-primary" cx="70" cy="70" fill="currentColor" r="1.5"></circle>
-<circle className="text-primary" cx="50" cy="85" fill="currentColor" r="1.5"></circle>
-<circle className="text-primary" cx="20" cy="60" fill="currentColor" r="1.5"></circle>
-<circle className="text-primary" cx="30" cy="25" fill="currentColor" r="1.5"></circle>
-</svg>
-</div>
-{/* Labels */}
-<div className="absolute top-0 font-headline font-bold text-[10px] tracking-widest text-on-surface-variant">PERFORMANCE</div>
-<div className="absolute bottom-0 font-headline font-bold text-[10px] tracking-widest text-on-surface-variant">SECURITY</div>
-<div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 font-headline font-bold text-[10px] tracking-widest text-on-surface-variant rotate-90">MAINTAINABILITY</div>
-<div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 font-headline font-bold text-[10px] tracking-widest text-on-surface-variant -rotate-90">TECH DEBT</div>
-</div>
-</div>
-{/* Bar Chart Side (Effort & Cost) */}
-<div className="lg:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col">
-<h4 className="text-xl font-headline font-bold text-on-surface mb-2">Metrics Correlation</h4>
-<p className="text-sm text-on-surface-variant mb-8">Resource burn vs. technical gain</p>
-<div className="flex-1 space-y-8">
-{/* Performance vs Cost Bar */}
-<div className="space-y-3">
-<div className="flex justify-between text-xs font-medium">
-<span className="text-on-surface">Cloud Efficiency</span>
-<span className="text-primary">+34%</span>
-</div>
-<div className="h-6 bg-surface-container-lowest rounded overflow-hidden p-1 flex">
-<div className="h-full bg-primary rounded-sm" ></div>
-</div>
-</div>
-{/* Scalability vs Cost Bar */}
-<div className="space-y-3">
-<div className="flex justify-between text-xs font-medium">
-<span className="text-on-surface">Data Throughput</span>
-<span className="text-tertiary-fixed-dim">Optimized</span>
-</div>
-<div className="h-6 bg-surface-container-lowest rounded overflow-hidden p-1 flex">
-<div className="h-full bg-tertiary rounded-sm" ></div>
-</div>
-</div>
-{/* Security Posture */}
-<div className="space-y-3">
-<div className="flex justify-between text-xs font-medium">
-<span className="text-on-surface">Vulnerability Mitigation</span>
-<span className="text-on-surface-variant">Low Effort</span>
-</div>
-<div className="h-6 bg-surface-container-lowest rounded overflow-hidden p-1 flex">
-<div className="h-full bg-secondary rounded-sm" ></div>
-</div>
-</div>
-</div>
-<div className="mt-8 pt-6 border-t border-outline-variant/15">
-<div className="flex items-center gap-4">
-<div className="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center">
-<span className="material-symbols-outlined text-tertiary" data-icon="trending_up">trending_up</span>
-</div>
-<div>
-<div className="text-xs text-on-surface-variant">ROI Factor</div>
-<div className="text-lg font-headline font-bold text-on-surface">2.4x Multiplier</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-{/* Alternative Approaches Section */}
-<section className="mb-12">
-<div className="flex items-center gap-3 mb-8">
-<div className="h-[1px] flex-1 bg-outline-variant/20"></div>
-<h4 className="text-xl font-headline font-bold text-on-surface tracking-tighter px-4">ALTERNATIVE APPROACHES</h4>
-<div className="h-[1px] flex-1 bg-outline-variant/20"></div>
-</div>
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-{/* MVP */}
-<div className="bg-surface-container-low border border-outline-variant/10 p-8 rounded-xl hover:bg-surface-container-high transition-all group">
-<div className="mb-6 flex justify-between items-start">
-<div className="px-2 py-1 bg-surface-container-lowest rounded text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Approach Alpha</div>
-<span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="bolt">bolt</span>
-</div>
-<h5 className="text-2xl font-headline font-bold mb-4">Minimum Viable</h5>
-<p className="text-sm text-on-surface-variant leading-relaxed mb-8">Focuses exclusively on the critical refactor of the message broker. Quick implementation with limited scope.</p>
-<ul className="space-y-3 mb-8">
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Fastest time-to-production
-                        </li>
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Low immediate cost
-                        </li>
-</ul>
-<div className="mt-auto">
-<div className="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Impact</div>
-<div className="text-lg font-headline font-bold text-on-surface">30% Debt Reduction</div>
-</div>
-</div>
-{/* Balanced */}
-<div className="bg-surface-container-high border-2 border-primary/20 p-8 rounded-xl relative overflow-hidden">
-<div className="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
-<div className="mb-6 flex justify-between items-start">
-<div className="px-2 py-1 bg-primary/10 rounded text-[10px] font-bold text-primary tracking-widest uppercase">Recommended</div>
-<span className="material-symbols-outlined text-primary" data-icon="balance" >balance</span>
-</div>
-<h5 className="text-2xl font-headline font-bold mb-4">Balanced Strategy</h5>
-<p className="text-sm text-on-surface-variant leading-relaxed mb-8">Holistic refactor of broker and API layers. Optimizes for long-term maintenance and current scale.</p>
-<ul className="space-y-3 mb-8">
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Scalable for next 12 months
-                        </li>
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Security baseline upgrade
-                        </li>
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Modular component logic
-                        </li>
-</ul>
-<div className="mt-auto">
-<div className="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Impact</div>
-<div className="text-lg font-headline font-bold text-primary">65% Debt Reduction</div>
-</div>
-</div>
-{/* Comprehensive */}
-<div className="bg-surface-container-low border border-outline-variant/10 p-8 rounded-xl hover:bg-surface-container-high transition-all group">
-<div className="mb-6 flex justify-between items-start">
-<div className="px-2 py-1 bg-surface-container-lowest rounded text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Approach Omega</div>
-<span className="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors" data-icon="architecture">architecture</span>
-</div>
-<h5 className="text-2xl font-headline font-bold mb-4">Comprehensive</h5>
-<p className="text-sm text-on-surface-variant leading-relaxed mb-8">Complete architectural re-alignment to event-driven microservices. Deepest impact on future-proofing.</p>
-<ul className="space-y-3 mb-8">
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Near-zero technical debt
-                        </li>
-<li className="flex items-center gap-3 text-xs">
-<span className="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span>
-                            Enterprise-grade security
-                        </li>
-</ul>
-<div className="mt-auto">
-<div className="text-[10px] uppercase font-bold text-on-surface-variant mb-1">Impact</div>
-<div className="text-lg font-headline font-bold text-on-surface">95% Debt Reduction</div>
-</div>
-</div>
-</div>
-</section>
-{/* Final Summary/Action Footer */}
-<footer className="bg-surface-container-lowest p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8">
-<div className="flex items-center gap-6">
-<div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
-<img alt="Analyst Profile" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyl0Y7pO9uUYLYIpS_bMl1nMtG-NU5ellT_fyvyp42dObABc_RxDRdxGqrlLKzHyCZu4v_8MUcqlgMOjZKZWIedPsCrzHSAZx0n6mS6_hW1udwguZEmZO2YRgzeAqGXaDrCKmEZhBhiZmtthAk18aTbPh0y6NWJMyCFWHnZJk5zW0t1cva8XEhQ-kMr6VJels_nCtGR4fsgoCwFdltvY8Qr9L-ZEk_yYZjB4edjG0VhLMqfgS8bBYxjhu6A1HMNrhVTjioqlUrhQ-F"/>
-</div>
-<div>
-<h6 className="font-headline font-bold text-on-surface">Automated Analyst Summary</h6>
-<p className="text-sm text-on-surface-variant max-w-lg">"Based on our 2.4-stable analysis, the Refactor of the Core Message Module represents the highest risk but also the highest return on performance stability."</p>
-</div>
-</div>
-<div className="flex gap-4">
-<button className="px-8 py-3 bg-primary text-on-primary font-bold rounded-lg shadow-lg shadow-primary/10 active:scale-95 transition-all" >
-                    Initiate Refactor
-                </button>
-</div>
-</footer>
-</main>
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Layout from '../components/layout/Layout';
+import { mistletoeApi } from '../api/endpoints';
+import type { AnalysisResult } from '../types';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
-    </>
+export default function AnalysisDetailPage() {
+  const { id } = useParams<{ id: string }>();
+  const [result, setResult] = useState<AnalysisResult | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isExporting, setIsExporting] = useState(false);
+  const navigate = useNavigate();
+
+  const TIER_LABELS = ['MVP', 'Balanced', 'Comprehensive'] as const;
+  type TierLabel = typeof TIER_LABELS[number];
+  const [selectedTier, setSelectedTier] = useState<TierLabel>('Comprehensive');
+  const [isSaved, setIsSaved] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    async function fetchResult() {
+      if (!id) return;
+      setIsLoading(true);
+      try {
+        const data = await mistletoeApi.getAnalysis(id);
+        setResult(data);
+        setIsSaved(data.is_saved);
+      } catch (err) {
+        console.error('Failed to fetch analysis detail', err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchResult();
+  }, [id]);
+
+  const handleToggleSave = async () => {
+    if (!id || isSaving) return;
+    setIsSaving(true);
+    try {
+      const response = await mistletoeApi.toggleSaveAnalysis(id);
+      setIsSaved(response.is_saved);
+    } catch (err) {
+      console.error('Failed to toggle save status', err);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleExportPdf = async () => {
+    if (!id) return;
+    setIsExporting(true);
+    try {
+      const blob = await mistletoeApi.downloadPdfReport(id);
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `mistletoe-report-${id.substring(0, 8)}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Failed to export PDF', err);
+      alert('Failed to generate PDF report.');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleShare = () => {
+    alert("Share link copied to clipboard!");
+  }
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-on-surface font-medium animate-pulse">Analyzing architectural data...</div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!result) {
+    return (
+      <Layout>
+        <div className="text-center py-20">
+          <h2 className="text-2xl font-bold text-on-surface mb-2">Analysis Not Found</h2>
+          <p className="text-on-surface-variant mb-6">The analysis you are looking for does not exist or has been removed.</p>
+          <button onClick={() => navigate('/history')} className="text-primary font-bold hover:underline">Back to History</button>
+        </div>
+      </Layout>
+    );
+  }
+
+  // Derive title from text
+  const featureTitle = result.feature_request_text.split('.')[0].substring(0, 50);
+  
+  // Custom mapping for risk colors
+  const getRiskColor = (level: string) => {
+    switch(level) {
+      case 'critical': return 'text-error bg-error';
+      case 'high': return 'text-error bg-error';
+      case 'medium': return 'text-tertiary bg-tertiary';
+      default: return 'text-secondary bg-secondary';
+    }
+  };
+  // Radar chart data mapping
+  const getScore = (impact: string) => impact === 'critical' ? 95 : impact === 'high' ? 80 : impact === 'medium' ? 60 : impact === 'low' ? 30 : 10;
+  
+  const chartData = [
+    { subject: 'PERFORMANCE', value: getScore(result.performance_impact), fullMark: 100 },
+    { subject: 'MAINTAINABILITY', value: result.impact_score || 50, fullMark: 100 },
+    { subject: 'SECURITY', value: getScore(result.security_impact), fullMark: 100 },
+    { subject: 'TECH DEBT', value: getScore(result.technical_debt_score), fullMark: 100 },
+  ];
+
+  // Find the matching alternative approach for the selected tier
+  const activeTierData = result.alternative_approaches.find(
+    (a) => a.label === selectedTier
+  );
+
+  // Map impact_level from tier approach to display risk
+  const getTierRisk = (impactLevel: string): string => {
+    switch (impactLevel) {
+      case 'high': return 'high';
+      case 'medium': return 'medium';
+      case 'low': return 'low';
+      default: return impactLevel;
+    }
+  };
+
+  return (
+    <Layout>
+      <header className="mb-10">
+        <div className="text-[10px] text-on-surface-variant font-bold mb-2 uppercase tracking-widest flex items-center gap-2">
+          <span>Repositories</span>
+          <span className="opacity-50">›</span>
+          <span>{result.repository_id ? 'Wistletoe' : 'Unknown'}</span>
+          <span className="opacity-50">›</span>
+          <span className="text-primary">Feature Analysis</span>
+        </div>
+        
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-headline font-bold text-on-surface tracking-tight leading-tight">Feature Analysis: {featureTitle}</h2>
+            <p className="text-on-surface-variant mt-2 text-sm leading-relaxed">{result.feature_request_text}</p>
+          </div>
+          <div className="flex gap-3 shrink-0">
+            <button 
+              onClick={handleToggleSave}
+              disabled={isSaving}
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${isSaved ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container-high text-on-surface hover:bg-surface-bright border border-outline-variant/30'} disabled:opacity-50`}
+              title={isSaved ? "Remove from saved" : "Save analysis"}
+            >
+              <span className={`material-symbols-outlined text-[20px] ${isSaved ? 'fill-[1]' : ''}`} data-icon="bookmark">bookmark</span>
+            </button>
+            <button 
+              onClick={handleShare}
+              className="px-4 py-2.5 bg-surface-container-high text-on-surface rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors text-xs font-bold uppercase tracking-wider"
+            >
+              <span className="material-symbols-outlined text-[16px]" data-icon="share">share</span>
+              Share Report
+            </button>
+            <button 
+              onClick={handleExportPdf}
+              disabled={isExporting}
+              className="px-4 py-2.5 bg-surface-container-high border border-outline-variant/30 text-on-surface rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors text-xs font-bold uppercase tracking-wider disabled:opacity-50"
+            >
+              <span className="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+              Export PDF
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Alternative Approaches Section */}
+      <section className="mb-12">
+        <h3 className="text-center text-[11px] font-bold tracking-[0.2em] text-on-surface-variant uppercase mb-8">Implementation Tier Selection</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {result.alternative_approaches.map((app, idx) => {
+            // Styling and icons vary by approach sequence (mocking the image 2 layout)
+            const isActiveTier = app.label === selectedTier;
+            const badgeLabel = app.label;
+            const iconName = idx === 0 ? "bolt" : idx === 1 ? "balance" : "architecture";
+            const debtReduction = idx === 0 ? "30%" : idx === 1 ? "65%" : "95%";
+            
+            return (
+              <div 
+                key={idx} 
+                onClick={() => setSelectedTier(app.label as TierLabel)}
+                className={`bg-surface-container-low rounded-xl p-8 flex flex-col transition-all group cursor-pointer hover:-translate-y-1 ${isActiveTier ? 'border-2 border-primary bg-primary/5 shadow-[0_0_40px_rgba(85,216,225,0.1)] scale-[1.02]' : 'border-2 border-transparent hover:bg-surface-container-high hover:shadow-xl'}`}
+              >
+                
+                <div className="flex justify-between items-start mb-6">
+                  <div className={`px-2 py-1 rounded text-[8px] font-bold tracking-[0.15em] uppercase ${isActiveTier ? 'bg-primary text-on-primary' : 'bg-surface-container-highest text-on-surface-variant'}`}>
+                    {isActiveTier ? "Current Selection" : badgeLabel}
+                  </div>
+                  <span className={`material-symbols-outlined text-lg ${isActiveTier ? 'text-primary' : 'text-on-surface-variant'}`} data-icon={iconName}>{iconName}</span>
+                </div>
+                
+                <h4 className="text-2xl font-headline font-bold text-on-surface tracking-tight mb-3">{app.label}</h4>
+                <p className="text-sm text-on-surface-variant leading-relaxed font-medium mb-8">
+                  {app.description.length > 100 ? `${app.description.substring(0, 100)}...` : app.description}
+                </p>
+                
+                <ul className="mb-8 space-y-3">
+                  <li className="flex items-start gap-2 text-xs font-medium text-on-surface-variant">
+                    <div className={`w-1.5 h-1.5 rounded-full mt-1 shrink-0 ${isActiveTier ? 'bg-primary' : 'bg-primary/40'}`}></div>
+                    <span>{idx === 0 ? 'Fastest time-to-production' : idx === 1 ? 'Scalable for next 12 months' : 'Near-zero technical debt'}</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-xs font-medium text-on-surface-variant">
+                    <div className={`w-1.5 h-1.5 rounded-full mt-1 shrink-0 ${isActiveTier ? 'bg-primary' : 'bg-primary/40'}`}></div>
+                    <span>{idx === 0 ? 'Low immediate cost' : idx === 1 ? 'Security baseline upgrade' : 'Enterprise-grade security'}</span>
+                  </li>
+                  {isActiveTier && (
+                  <li className="flex items-start gap-2 text-xs font-medium text-on-surface-variant">
+                    <div className={`w-1.5 h-1.5 rounded-full mt-1 shrink-0 ${isActiveTier ? 'bg-primary' : 'bg-primary/40'}`}></div>
+                    <span>Modular component logic</span>
+                  </li>
+                  )}
+                </ul>
+
+                <div className="mt-auto pt-5 border-t border-outline-variant/10">
+                  <div className="text-[9px] font-bold tracking-widest uppercase text-on-surface-variant mb-1">Impact</div>
+                  <div className={`text-lg font-headline font-bold ${isActiveTier ? 'text-primary' : 'text-on-surface'}`}>{debtReduction} Debt Reduction</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Top 3 Metric Cards */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        {/* Risk Level */}
+        <div className="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between border border-transparent hover:border-outline-variant/10 transition-colors">
+          <div className="flex justify-between items-start mb-4">
+            <p className="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">Risk Level</p>
+            <span className={`material-symbols-outlined ${getRiskColor(activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level).split(' ')[0]}`} data-icon="warning">warning</span>
+          </div>
+          <div>
+            <div className="flex items-end gap-3 mb-3">
+              <h3 className={`text-4xl font-headline font-bold capitalize ${getRiskColor(activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level).split(' ')[0]}`}>
+                {activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level}
+              </h3>
+              <span className="text-xs text-on-surface-variant font-medium mb-1">Critical Path Impact</span>
+            </div>
+            <div className="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+              <div className={`h-full rounded-full ${getRiskColor(activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level).split(' ')[1]}`} 
+                style={{ 
+                  width: (activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level) === 'critical' ? '90%' : 
+                         (activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level) === 'high' ? '75%' : 
+                         (activeTierData ? getTierRisk(activeTierData.impact_level) : result.risk_level) === 'medium' ? '55%' : '35%' 
+                }}></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Estimated Effort */}
+        <div className="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between border border-transparent hover:border-outline-variant/10 transition-colors">
+          <div className="flex justify-between items-start mb-4">
+            <p className="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">Estimated Effort</p>
+            <span className="material-symbols-outlined text-primary/70" data-icon="timer">timer</span>
+          </div>
+          <div>
+            <div className="flex items-end gap-3 mb-4">
+              <h3 className="text-4xl font-headline font-bold text-primary">
+                {activeTierData ? `${activeTierData.estimated_effort_min_hours}-${activeTierData.estimated_effort_max_hours}` : `${result.estimated_effort_min_hours}-${result.estimated_effort_max_hours}`} hrs
+              </h3>
+              <span className="text-xs text-on-surface-variant font-medium mb-1">Dev cycles</span>
+            </div>
+            <div className="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+              <div className="h-full bg-primary rounded-full w-[60%]"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Projected Cost */}
+        <div className="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between border border-transparent hover:border-outline-variant/10 transition-colors">
+          <div className="flex justify-between items-start mb-4">
+            <p className="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">Projected Cost</p>
+            <span className="material-symbols-outlined text-on-surface-variant/50" data-icon="payments">payments</span>
+          </div>
+          <div>
+            <div className="flex items-end gap-3 mb-3">
+              <h3 className="text-4xl font-headline font-bold text-on-surface">
+                ${(activeTierData ? activeTierData.cost_estimate_max_usd : result.cost_estimate_max_usd).toLocaleString()}
+              </h3>
+              <span className="text-[10px] text-on-surface-variant font-bold mb-1 uppercase tracking-wider">USD / Analysis</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-tertiary"></div>
+              <span className="text-[10px] text-on-surface-variant font-medium uppercase tracking-wider">Includes infrastructure overhead</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Included Patterns & Effort Breakdown */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        {/* Included Patterns / Features */}
+        <div className="bg-surface-container-low rounded-xl p-6 border border-transparent hover:border-outline-variant/10 transition-colors">
+          <h4 className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant mb-4">
+            Included Patterns / Features
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {(activeTierData?.included_patterns || result.feature_types).map((pattern) => (
+              <span
+                key={pattern}
+                className="px-3 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold"
+              >
+                {pattern}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Effort Breakdown Summary */}
+        <div className="bg-surface-container-low rounded-xl p-6 border border-transparent hover:border-outline-variant/10 transition-colors">
+          <h4 className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant mb-4">
+            Effort Breakdown
+          </h4>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Min Effort</p>
+              <p className="text-lg font-headline font-bold text-on-surface">
+                {activeTierData ? activeTierData.estimated_effort_min_hours : result.estimated_effort_min_hours}h
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider mb-1">Max Buffer</p>
+              <p className="text-lg font-headline font-bold text-on-surface">
+                +{activeTierData 
+                  ? activeTierData.estimated_effort_max_hours - activeTierData.estimated_effort_min_hours 
+                  : result.estimated_effort_max_hours - result.estimated_effort_min_hours}h
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Affected Components */}
+      {result.affected_components.length > 0 && (
+        <section className="mb-12">
+          <h4 className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant mb-4">
+            Affected Components
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {result.affected_components.map((comp) => (
+              <span
+                key={comp}
+                className="px-3 py-1.5 bg-tertiary/10 text-tertiary border border-tertiary/20 rounded-full text-xs font-semibold"
+              >
+                {comp}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Middle Dashboard Section */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+        {/* Radar Chart Block */}
+        <div className="lg:col-span-8 bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-outline-variant/10 transition-colors">
+          <div className="flex justify-between items-start mb-8">
+            <div>
+              <h4 className="text-lg font-headline font-bold text-on-surface mb-1">Impact Visualization</h4>
+              <p className="text-xs text-on-surface-variant font-medium">Multi-dimensional analysis of feature refraction</p>
+            </div>
+            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+              <div className="flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-primary"></div> Current
+              </div>
+              <div className="flex items-center gap-1.5 opacity-50">
+                <div className="w-2 h-2 rounded-full bg-outline-variant"></div> Target
+              </div>
+            </div>
+          </div>
+          <div className="h-[300px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
+                <PolarGrid stroke="#2c313a" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: '#8b949e', fontSize: 10, fontWeight: 700, letterSpacing: 1 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                <Radar name="Current" dataKey="value" stroke="#55d8e1" strokeWidth={2} fill="#55d8e1" fillOpacity={0.1} />
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Metrics Correlation */}
+        <div className="lg:col-span-4 flex flex-col gap-6">
+          <div className="bg-surface-container-low p-6 rounded-xl flex-1 border border-transparent hover:border-outline-variant/10 transition-colors">
+            <h4 className="text-lg font-headline font-bold text-on-surface mb-1">Metrics Correlation</h4>
+            <p className="text-xs text-on-surface-variant font-medium mb-8">Resource burn vs. technical gain</p>
+            
+            <div className="space-y-6">
+              {/* Performance Gain */}
+              <div>
+                <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest mb-2">
+                  <span className="text-on-surface-variant">Performance Gain</span>
+                  <span className="text-primary">+{getScore(result.performance_impact)}%</span>
+                </div>
+                <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+                  <div className="bg-primary h-full rounded-full transition-all duration-500" style={{ width: `${getScore(result.performance_impact)}%` }}></div>
+                </div>
+              </div>
+              
+              {/* Security Readiness */}
+              <div>
+                <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest mb-2">
+                  <span className="text-on-surface-variant">Security Readiness</span>
+                  <span className="text-tertiary">
+                    {activeTierData ? (activeTierData.label === 'MVP' ? 'Baseline Upgrade' : activeTierData.label === 'Balanced' ? 'Standard Protocol' : 'Enterprise-Grade') : 'Optimized'}
+                  </span>
+                </div>
+                <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+                  <div className="bg-tertiary h-full rounded-full transition-all duration-500" style={{ width: `${activeTierData ? (activeTierData.label === 'MVP' ? 40 : activeTierData.label === 'Balanced' ? 70 : 100) : 60}%` }}></div>
+                </div>
+              </div>
+              
+              {/* Tech Debt Reduction */}
+              <div>
+                <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest mb-2">
+                  <span className="text-on-surface-variant">Tech Debt Reduction</span>
+                  <span className="text-secondary">
+                    {activeTierData ? (activeTierData.label === 'MVP' ? '30%' : activeTierData.label === 'Balanced' ? '65%' : '95%') : 'Low'}
+                  </span>
+                </div>
+                <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+                  <div className="bg-secondary h-full rounded-full transition-all duration-500" style={{ width: `${activeTierData ? (activeTierData.label === 'MVP' ? 30 : activeTierData.label === 'Balanced' ? 65 : 95) : 40}%` }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-surface-container-low p-5 rounded-xl border border-transparent hover:border-outline-variant/10 transition-colors flex items-center gap-4">
+            <div className="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-primary text-xl" data-icon="trending_up">trending_up</span>
+            </div>
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-0.5">ROI Factor</div>
+              <div className="text-lg font-headline font-bold text-on-surface tracking-tight">
+                 {activeTierData ? (activeTierData.label === 'MVP' ? '3.5x' : activeTierData.label === 'Balanced' ? '2.5x' : '1.8x') : '2.4x'} Multiplier
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Analyst Summary Footer */}
+      <section className="bg-surface-container-high rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 outline outline-1 outline-outline-variant/20 shadow-2xl">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-lg bg-surface-container-highest shrink-0 flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+            <span className="material-symbols-outlined text-primary text-2xl" data-icon="robot_2">robot_2</span>
+          </div>
+          <div>
+            <div className="text-on-surface font-bold text-sm mb-1">Automated Analyst Summary</div>
+            <p className="text-on-surface-variant text-xs font-medium leading-relaxed italic max-w-2xl">
+              "Based on our {result.repository_id ? 'repo' : '2.4-stable'} analysis, the {featureTitle} represents the highest risk but also the highest return on performance stability."
+            </p>
+          </div>
+        </div>
+        <button className="w-full md:w-auto px-6 py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-lg font-bold text-sm tracking-wide shadow-lg hover:shadow-primary/30 transition-shadow">
+          Initiate Refactor
+        </button>
+      </section>
+    </Layout>
   );
 }

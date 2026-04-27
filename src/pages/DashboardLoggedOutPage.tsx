@@ -1,4 +1,8 @@
+import { useAuth } from '../auth/useAuth';
+
 export default function DashboardLoggedOutPage() {
+  const { login } = useAuth();
+
   return (
     <>
       
@@ -35,7 +39,7 @@ export default function DashboardLoggedOutPage() {
 </a>
 </nav>
 <div className="mt-auto pt-6 border-t border-outline-variant/15">
-<button className="w-full bg-[#242a33] text-on-surface hover:bg-[#2f353e] font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg active:scale-95 transition-transform">
+<button onClick={login} className="w-full bg-[#242a33] text-on-surface hover:bg-[#2f353e] font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg active:scale-95 transition-transform">
 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
                     Connect GitHub
                 </button>
@@ -74,7 +78,7 @@ export default function DashboardLoggedOutPage() {
 </div>
 <div className="h-8 w-px bg-outline-variant/20 mx-2"></div>
 <button className="material-symbols-outlined text-on-surface-variant hover:text-on-surface" data-icon="notifications">notifications</button>
-<div className="flex items-center gap-3 ml-2 group cursor-pointer">
+<div onClick={login} className="flex items-center gap-3 ml-2 group cursor-pointer">
 <div className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30">
 <span className="material-symbols-outlined text-lg text-on-surface-variant" data-icon="person">person</span>
 </div>
@@ -246,7 +250,7 @@ export default function DashboardLoggedOutPage() {
 </div>
 {/* Floating Tooltip */}
 <div className="fixed bottom-8 right-8 z-50">
-<button className="w-14 h-14 rounded-full bg-primary text-on-primary shadow-[0_8px_32px_rgba(85,216,225,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<button onClick={login} className="w-14 h-14 rounded-full bg-primary text-on-primary shadow-[0_8px_32px_rgba(85,216,225,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
 <span className="material-symbols-outlined text-3xl" data-icon="login">login</span>
 </button>
 </div>

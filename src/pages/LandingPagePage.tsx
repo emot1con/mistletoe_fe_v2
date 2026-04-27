@@ -1,4 +1,8 @@
+import { useAuth } from '../auth/useAuth';
+
 export default function LandingPagePage() {
+  const { login } = useAuth();
+
   return (
     <>
       
@@ -18,7 +22,7 @@ export default function LandingPagePage() {
 <span className="material-symbols-outlined text-[#bbc9ca] hover:text-[#55d8e1] cursor-pointer" >notifications</span>
 <span className="material-symbols-outlined text-[#bbc9ca] hover:text-[#55d8e1] cursor-pointer" >settings</span>
 </div>
-<a className="primary-gradient text-on-primary font-bold px-5 py-2 rounded-lg text-sm tracking-tight cursor-pointer active:scale-95 transition-transform inline-block" href="{{DATA:SCREEN:SCREEN_19}}" >Analyze Repo</a>
+<button onClick={login} className="primary-gradient text-on-primary font-bold px-5 py-2 rounded-lg text-sm tracking-tight cursor-pointer active:scale-95 transition-transform inline-block">Analyze Repo</button>
 </div>
 </nav>
 <main className="pt-16">
@@ -36,7 +40,7 @@ export default function LandingPagePage() {
                     Bedah arsitektur kode Anda dengan presisi monolitik. Mistletoe mengurai dependensi, mendeteksi pola antipati, dan memberikan rekomendasi optimasi dalam hitungan detik.
                 </p>
 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-<a className="primary-gradient text-on-primary font-bold px-8 py-4 rounded-lg text-lg w-full sm:w-auto shadow-lg shadow-primary/20 text-center inline-block" href="{{DATA:SCREEN:SCREEN_19}}" >Mulai Analisis</a>
+<button onClick={login} className="primary-gradient text-on-primary font-bold px-8 py-4 rounded-lg text-lg w-full sm:w-auto shadow-lg shadow-primary/20 text-center inline-block">Mulai Analisis</button>
 <button className="border border-outline-variant hover:bg-surface-container-high transition-all text-on-surface font-semibold px-8 py-4 rounded-lg text-lg w-full sm:w-auto" >
                         Lihat Dokumentasi
                     </button>
@@ -169,7 +173,7 @@ export default function LandingPagePage() {
 <p className="text-on-surface-variant text-lg" >Bergabunglah dengan ribuan pengembang yang telah meningkatkan standar kualitas repositori mereka bersama Mistletoe.</p>
 </div>
 <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-<a className="primary-gradient text-on-primary font-bold px-10 py-5 rounded-lg text-lg shadow-xl shadow-primary/20 whitespace-nowrap text-center inline-block" href="{{DATA:SCREEN:SCREEN_19}}" >Mulai Sekarang — Gratis</a>
+<button onClick={login} className="primary-gradient text-on-primary font-bold px-10 py-5 rounded-lg text-lg shadow-xl shadow-primary/20 whitespace-nowrap text-center inline-block">Mulai Sekarang — Gratis</button>
 </div>
 </div>
 </div>
