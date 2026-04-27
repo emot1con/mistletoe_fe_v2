@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wistletoe | Repositories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2f353e",
+                        "surface-container-highest": "#2f353e",
+                        "on-tertiary": "#532200",
+                        "surface-tint": "#55d8e1",
+                        "secondary-container": "#007475",
+                        "surface-dim": "#0e141c",
+                        "error": "#ffb4ab",
+                        "on-background": "#dde3ef",
+                        "surface": "#0e141c",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-on-surface": "#2b313a",
+                        "on-tertiary-container": "#582500",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "tertiary": "#ffb68d",
+                        "surface-container-lowest": "#080f17",
+                        "on-primary": "#003739",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#00696e",
+                        "on-secondary-fixed-variant": "#004f50",
+                        "on-primary-container": "#003a3d",
+                        "surface-container-high": "#242a33",
+                        "surface-container-low": "#161c25",
+                        "secondary-fixed-dim": "#7dd5d5",
+                        "secondary-fixed": "#99f1f1",
+                        "outline-variant": "#3c494a",
+                        "on-primary-fixed-variant": "#004f53",
+                        "surface-container": "#1a2029",
+                        "on-secondary-container": "#9ff7f7",
+                        "primary": "#55d8e1",
+                        "tertiary-container": "#e2844a",
+                        "outline": "#869394",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-bright": "#343a43",
+                        "secondary": "#7dd5d5",
+                        "primary-fixed-dim": "#55d8e1",
+                        "primary-fixed": "#75f5fd",
+                        "on-surface": "#dde3ef",
+                        "primary-container": "#00adb5",
+                        "on-surface-variant": "#bbc9ca",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dde3ef",
+                        "background": "#0e141c",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#003737"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e141c; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-overlay { background: rgba(52, 58, 67, 0.6); backdrop-filter: blur(24px); }
+        .ghost-border { outline: 1px solid rgba(60, 73, 74, 0.15); }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex h-full w-64 fixed left-0 top-0 bg-[#161c25] shadow-[1px_0_0_0_rgba(60,73,74,0.15)] flex-col py-8 px-4 z-50">
+<div class="mb-10 px-2">
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+</div>
+<div>
+<h1 class="font-headline font-bold text-[#dde3ef] text-xl tracking-tighter">Wistletoe</h1>
+<p class="text-[10px] text-on-surface-variant font-medium tracking-widest uppercase">Analysis Engine</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33] hover:text-[#dde3ef] transition-all rounded-md font-['Inter'] text-sm font-medium ease-in-out duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-[#242a33] text-[#55d8e1] rounded-md font-['Inter'] text-sm font-medium transition-all ease-in-out duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span>Repositories</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33] hover:text-[#dde3ef] transition-all rounded-md font-['Inter'] text-sm font-medium ease-in-out duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:bg-[#242a33] hover:text-[#dde3ef] transition-all rounded-md font-['Inter'] text-sm font-medium ease-in-out duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 space-y-1">
+<button class="w-full flex items-center justify-center gap-2 py-3 mb-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-md active:scale-95 transition-transform text-sm">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+            New Analysis
+        </button>
+<a class="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:text-[#dde3ef] transition-all text-xs font-medium cursor-pointer" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>Docs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#bbc9ca] hover:text-[#dde3ef] transition-all text-xs font-medium cursor-pointer" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-40 h-16 bg-[#0e141c] flex justify-between items-center px-6 md:pl-72 md:pr-10">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg pl-10 pr-4 py-2 text-sm text-on-surface focus:ring-1 focus:ring-primary placeholder-on-surface-variant/50" placeholder="Search repositories..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 ml-6">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-4 py-1.5 rounded-lg text-sm font-bold active:scale-95 transition-transform">Add Repository</button>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30 ml-2 cursor-pointer">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close up professional headshot of a developer in high contrast studio lighting with dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxq3ruzKdlPWwyb44xr5EThR59XVvdYEGPvcfKhlzDCtNwXaSkc6L_3cEgL6y6kbSvzdBuny6v4L4ZMJyCVR9ojqYoD81Xm6IEZ0FKknOWtGWCUfdIZZMTbiFczDrPsTnPiB_NVtKARJfxnoA3BT2vgKVPPhfV-RujcK_HYMV6_tCs4Iy8vRoJYBOth1FAXUAw2WiCUWifsE1kmG-sPiAklsl2R3-muvufHf-yC4tOgNA0owDM8D_dt0vZdJcVonqVel3j1UjYJVAC"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 md:pl-72 md:pr-10 px-6 min-h-screen">
+<!-- Header Section -->
+<section class="mb-10">
+<h2 class="font-headline text-4xl font-bold tracking-tighter text-on-surface mb-2">Repositories</h2>
+<p class="text-on-surface-variant max-w-2xl font-body">Manage your architectural analysis pipeline. Monitor code quality, security vectors, and structural health across your connected services.</p>
+</section>
+<!-- Bento Grid Layout for Repo View -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Repository List (Main Column) -->
+<div class="lg:col-span-8 space-y-4">
+<!-- Repo Card 1 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-xl p-6 ghost-border relative overflow-hidden">
+<div class="flex items-start justify-between relative z-10">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-headline font-semibold text-xl text-on-surface cursor-pointer">quantum-engine-v2</h3>
+<span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-widest bg-secondary-container/20 text-secondary border border-secondary/20">Active</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#f1e05a]"></span> JavaScript
+                                </span>
+<span>Last analysis: Oct 24, 2023</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-2xl font-headline font-bold text-primary tracking-tighter">98.4</span>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Health Score</span>
+</div>
+</div>
+<!-- Stats Preview -->
+<div class="mt-6 flex gap-8 border-t border-outline-variant/10 pt-4">
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Critical Vulns</span>
+<span class="text-sm font-mono text-error font-bold">0</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Cognitive Load</span>
+<span class="text-sm font-mono text-on-surface font-bold">Low</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Lines Analyzed</span>
+<span class="text-sm font-mono text-on-surface font-bold">42.8k</span>
+</div>
+<button class="ml-auto text-primary text-sm font-bold flex items-center gap-1 hover:underline">Analysis <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+</div>
+</div>
+<!-- Repo Card 2 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-xl p-6 ghost-border relative overflow-hidden">
+<div class="flex items-start justify-between relative z-10">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-tertiary text-3xl">deployed_code</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-headline font-semibold text-xl text-on-surface cursor-pointer">atlas-api-gateway</h3>
+<span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-widest bg-surface-container-highest text-on-surface-variant border border-outline-variant/30">Idle</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#3178c6]"></span> TypeScript
+                                </span>
+<span>Last analysis: Sep 12, 2023</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-2xl font-headline font-bold text-on-surface-variant tracking-tighter">72.1</span>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Health Score</span>
+</div>
+</div>
+<div class="mt-6 flex gap-8 border-t border-outline-variant/10 pt-4 opacity-70 group-hover:opacity-100 transition-opacity">
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Critical Vulns</span>
+<span class="text-sm font-mono text-tertiary font-bold">3</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Cognitive Load</span>
+<span class="text-sm font-mono text-on-surface font-bold">Medium</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Lines Analyzed</span>
+<span class="text-sm font-mono text-on-surface font-bold">128.4k</span>
+</div>
+<button class="ml-auto text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        Run Analysis <span class="material-symbols-outlined text-xs">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Connect Component -->
+</div>
+<!-- Side Widgets (Secondary Column) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Global Insights Component -->
+<div class="bg-surface-container-low rounded-xl p-6 ghost-border">
+<h5 class="text-xs uppercase tracking-[0.2em] font-bold text-tertiary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">insights</span>
+                    Global Insights
+                </h5>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">Total Repos</span>
+<span class="text-lg font-mono font-bold text-on-surface">12</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">Critical Alerts</span>
+<span class="text-lg font-mono font-bold text-error">03</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">Monthly Credits</span>
+<div class="text-right">
+<span class="text-lg font-mono font-bold text-primary">85%</span>
+<div class="w-32 h-1.5 bg-surface-container-highest rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Language Vector Component -->
+<div class="bg-surface-container-low rounded-xl p-6 ghost-border">
+<h5 class="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-6">Language Vector</h5>
+<div class="space-y-4">
+<div class="relative">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">TypeScript</span>
+<span class="text-on-surface-variant">42%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 42%;"></div>
+</div>
+</div>
+<div class="relative">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">JavaScript</span>
+<span class="text-on-surface-variant">31%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-[#f1e05a]" style="width: 31%;"></div>
+</div>
+</div>
+<div class="relative">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Python</span>
+<span class="text-on-surface-variant">18%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-[#3572A5]" style="width: 18%;"></div>
+</div>
+</div>
+<div class="relative">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Go</span>
+<span class="text-on-surface-variant">9%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-[#00ADD8]" style="width: 9%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Promotion Card Component -->
+<div class="relative rounded-xl overflow-hidden h-48 group">
+<img alt="Cybersecurity Visualization" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up high-tech glowing computer circuit board with neon cyan light lines running through pathways" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQsTYqNFwnr17DHrfeiAgiaGk0k4GxzCqnF5lM7qgb9enT1eLKgKUQ2Ph3ipGWf7TSuAFcrnWRfoV_rceWDHssrx0OzCCdnmxLC5q2DehiW2DrbmMKSYlsMsmK7QlbasAd_sansYWYgQHZbyu_C5h9FOq71kqziXI-5mJUHVjp8-XlKuWukwcHUTraah4cC-FN3DiD6tYrRcC3tUC2TE73dYd04EHO_7UB9FflId31g4VJ9O2RKHv9FLdQ5hACeYOfL0YJF7YwQqIo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-80"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-tertiary text-[10px] font-bold uppercase tracking-widest mb-1">Advanced Security</span>
+<h6 class="font-headline text-lg font-bold text-on-surface leading-tight">Enable Real-Time Scanning</h6>
+<button class="mt-2 text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                        Upgrade Plan <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-transform z-50 md:hidden">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>

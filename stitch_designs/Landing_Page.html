@@ -1,0 +1,290 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Mistletoe - Analisis Repositori Otomatis</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2f353e",
+                        "surface-container-highest": "#2f353e",
+                        "on-tertiary": "#532200",
+                        "surface-tint": "#55d8e1",
+                        "secondary-container": "#007475",
+                        "surface-dim": "#0e141c",
+                        "error": "#ffb4ab",
+                        "on-background": "#dde3ef",
+                        "surface": "#0e141c",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-on-surface": "#2b313a",
+                        "on-tertiary-container": "#582500",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "tertiary": "#ffb68d",
+                        "surface-container-lowest": "#080f17",
+                        "on-primary": "#003739",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#00696e",
+                        "on-secondary-fixed-variant": "#004f50",
+                        "on-primary-container": "#003a3d",
+                        "surface-container-high": "#242a33",
+                        "surface-container-low": "#161c25",
+                        "secondary-fixed-dim": "#7dd5d5",
+                        "secondary-fixed": "#99f1f1",
+                        "outline-variant": "#3c494a",
+                        "on-primary-fixed-variant": "#004f53",
+                        "surface-container": "#1a2029",
+                        "on-secondary-container": "#9ff7f7",
+                        "primary": "#55d8e1",
+                        "tertiary-container": "#e2844a",
+                        "outline": "#869394",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-bright": "#343a43",
+                        "secondary": "#7dd5d5",
+                        "primary-fixed-dim": "#55d8e1",
+                        "primary-fixed": "#75f5fd",
+                        "on-surface": "#dde3ef",
+                        "primary-container": "#00adb5",
+                        "on-surface-variant": "#bbc9ca",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dde3ef",
+                        "background": "#0e141c",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#003737"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e141c;
+            color: #dde3ef;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(52, 58, 67, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #55d8e1 0%, #00adb5 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(85, 216, 225, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary">
+<!-- TopNavBar Alignment with JSON Spec -->
+<nav class="fixed top-0 w-full z-50 h-16 bg-[#0e141c] flex justify-between items-center px-6 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-[#dde3ef] tracking-tighter font-['Space_Grotesk']" style="">Mistletoe</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#55d8e1] font-bold border-b-2 border-[#55d8e1] font-['Space_Grotesk'] tracking-tight cursor-pointer active:scale-95 transition-transform" href="#" style="">Home</a>
+<a class="text-[#bbc9ca] hover:text-[#55d8e1] transition-colors duration-200 font-['Space_Grotesk'] tracking-tight cursor-pointer active:scale-95 transition-transform" href="#capabilities" style="">Capabilities</a>
+<a class="text-[#bbc9ca] hover:text-[#55d8e1] transition-colors duration-200 font-['Space_Grotesk'] tracking-tight cursor-pointer active:scale-95 transition-transform" href="#workflow" style="">Workflow</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-3 mr-4">
+<span class="material-symbols-outlined text-[#bbc9ca] hover:text-[#55d8e1] cursor-pointer" style="">filter_list</span>
+<span class="material-symbols-outlined text-[#bbc9ca] hover:text-[#55d8e1] cursor-pointer" style="">notifications</span>
+<span class="material-symbols-outlined text-[#bbc9ca] hover:text-[#55d8e1] cursor-pointer" style="">settings</span>
+</div>
+<a class="primary-gradient text-on-primary font-bold px-5 py-2 rounded-lg text-sm tracking-tight cursor-pointer active:scale-95 transition-transform inline-block" href="{{DATA:SCREEN:SCREEN_19}}" style="">Analyze Repo</a>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col items-center justify-center px-6 overflow-hidden">
+<!-- Decorative Architectural Element -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary opacity-5 blur-[120px] rounded-full"></div>
+<div class="absolute top-1/2 -right-48 w-[500px] h-[500px] bg-tertiary opacity-5 blur-[150px] rounded-full"></div>
+<div class="max-w-5xl w-full text-center z-10">
+<span class="text-primary font-bold tracking-[0.2em] text-xs mb-6 block uppercase" style="">Automated Insight Engine</span>
+<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.9] mb-8 text-glow" style="">
+                    Analisis Repositori <br><span class="text-[#dde3ef]" style="">Otomatis.</span>
+</h1>
+<p class="font-body text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="">
+                    Bedah arsitektur kode Anda dengan presisi monolitik. Mistletoe mengurai dependensi, mendeteksi pola antipati, dan memberikan rekomendasi optimasi dalam hitungan detik.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="primary-gradient text-on-primary font-bold px-8 py-4 rounded-lg text-lg w-full sm:w-auto shadow-lg shadow-primary/20 text-center inline-block" href="{{DATA:SCREEN:SCREEN_19}}" style="">Mulai Analisis</a>
+<button class="border border-outline-variant hover:bg-surface-container-high transition-all text-on-surface font-semibold px-8 py-4 rounded-lg text-lg w-full sm:w-auto" style="">
+                        Lihat Dokumentasi
+                    </button>
+</div>
+</div>
+<!-- Dashboard Preview / Abstract Visual -->
+<div class="mt-20 w-full max-w-6xl aspect-[16/9] rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20 shadow-2xl relative">
+<img alt="Analysis Engine Interface" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Modern code editor interface with glowing terminal lines and cyan data visualizations on a dark high-tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE4RNgJ4n5Yadrj4T-xBY-9Na6hrgcmOTb64Z283_HUGLL71fvBvAlXpJyuHzGv96RXwu4CSN8jx3F4s4Mr2EF1t0O8RXhEElH4VxgecAjn03sp4hDg3vM-iAHDCIu5Iy_7ha0Ffz8LhLRNk7aQEYYZhIbRhBprMn45B1oPpQ4hcxuFD27OpMQOucYv3OgzjVgr8kDi3XVEc6N5D0izZCz9BNyiGSQ51WzF9d6GvzCVZ78FnQH9ZlIGQBir32UZaS6c-tZiQbppFoN" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 flex justify-between items-end">
+<div class="space-y-2">
+<div class="h-1 w-32 bg-primary rounded-full"></div>
+<p class="text-xs font-mono text-on-surface-variant" style="">ENGINE_STATUS: ACTIVE // SCANNING_REPOS</p>
+</div>
+<div class="glass-panel p-4 rounded-lg border border-outline-variant/30">
+<span class="text-tertiary text-sm font-bold flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-xs" style="">analytics</span> Insights Detected: 142
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Capabilities Section - Bento Grid Layout -->
+<section class="py-32 px-6 max-w-7xl mx-auto" id="capabilities">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-4" style="">Kemampuan Tanpa Batas</h2>
+<p class="text-on-surface-variant" style="">Kami melampaui sekadar linter. Kami memahami niat di balik baris kode Anda.</p>
+</div>
+<div class="text-right">
+<span class="text-surface-variant font-headline text-8xl font-black opacity-10" style="">01</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Big Feature -->
+<div class="md:col-span-7 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between border border-outline-variant/10 group hover:border-primary/30 transition-all">
+<div class="space-y-6">
+<div class="w-12 h-12 bg-secondary-container/20 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="">architecture</span>
+</div>
+<h3 class="text-3xl font-headline font-bold" style="">Deep Context Mapping</h3>
+<p class="text-on-surface-variant leading-relaxed" style="">
+                            Mistletoe membangun graf ketergantungan menyeluruh dari repositori Anda, memungkinkan visualisasi aliran data antar layanan yang kompleks tanpa batas.
+                        </p>
+</div>
+<div class="mt-8 rounded-lg overflow-hidden bg-surface-container-lowest h-48 border border-outline-variant/20 relative">
+<div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
+<img alt="Context Map" class="w-full h-full object-cover mix-blend-screen" data-alt="Complex network graph visualization with glowing nodes and interconnecting cyan lines on a dark architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPu8OSwNvBmL4hl2sHbts22M85n6PAadQtP14t34tDN6emWbCeSTb4b4mUxbONLM0HFKciZrXgxI4ZlYPO315alSo_isNfKz2hr7FwxVTi-CDieBs0hQjq3k9iiVxHEJMDXmj4aXtftLCSeDwjwz7Ho4bBIK_Dzavq_1F7zImphisc0YWs68eEIv80RpKC6JAC-nzVUvxTv-g3ucPPZoNl9GUCLwFZUw-Sgz0IZHB5s0TcF_dierLHFrYeDE0fUuWJnvcmF7I5PcRk" style="">
+</div>
+</div>
+<!-- Secondary Feature -->
+<div class="md:col-span-5 bg-surface-container-high rounded-xl p-8 flex flex-col justify-between border border-outline-variant/10">
+<div class="space-y-6">
+<div class="w-12 h-12 bg-tertiary-container/20 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="">security</span>
+</div>
+<h3 class="text-2xl font-headline font-bold" style="">Audit Keamanan Proaktif</h3>
+<p class="text-on-surface-variant text-sm" style="">Identifikasi kerentanan sebelum mereka menjadi liabilitas. Audit kami mencakup rahasia yang bocor hingga dependensi yang usang.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-tertiary mt-6">
+<span class="text-tertiary text-xs font-bold block mb-1" style="">ALERT</span>
+<p class="font-mono text-xs text-on-surface" style="">Critical dependency vulnerability found in 'package-lock.json'</p>
+</div>
+</div>
+<!-- Small Features -->
+<div class="md:col-span-4 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-4" style="">bolt</span>
+<h4 class="font-bold mb-2" style="">Analisis Instan</h4>
+<p class="text-on-surface-variant text-sm" style="">Optimasi performa real-time untuk pipeline CI/CD Anda.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-4" style="">hub</span>
+<h4 class="font-bold mb-2" style="">Multi-Repo Sync</h4>
+<p class="text-on-surface-variant text-sm" style="">Pantau kesehatan seluruh organisasi dalam satu dashboard tunggal.</p>
+</div>
+<div class="md:col-span-4 bg-primary-container/10 rounded-xl p-6 border border-primary/20 flex items-center justify-center">
+<a class="text-primary font-bold flex items-center gap-2 group" href="#" style="">
+                        Jelajahi Semua Fitur 
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Workflow Section ('How it works') -->
+<section class="py-32 bg-surface-container-lowest" id="workflow">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-24">
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-4" style="">Alur Kerja yang Presisi</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto" style="">Tiga langkah sederhana untuk mengubah repositori Anda menjadi karya arsitektur yang bersih.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-16 relative">
+<!-- Connector line -->
+<div class="hidden lg:block absolute top-12 left-1/4 right-1/4 h-[1px] bg-outline-variant/30"></div>
+<!-- Step 1 -->
+<div class="relative flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center mb-8 z-10">
+<span class="material-symbols-outlined text-4xl text-primary" style="">link</span>
+</div>
+<h3 class="text-xl font-bold mb-4" style="">Hubungkan</h3>
+<p class="text-on-surface-variant text-sm px-4" style="">Integrasikan GitHub, GitLab, atau Bitbucket Anda dalam hitungan detik dengan otentikasi aman.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center mb-8 z-10 shadow-[0_0_30px_rgba(85,216,225,0.2)]">
+<span class="material-symbols-outlined text-4xl text-primary" style="">settings_suggest</span>
+</div>
+<h3 class="text-xl font-bold mb-4" style="">Proses Analisis</h3>
+<p class="text-on-surface-variant text-sm px-4" style="">Engine Mistletoe memindai setiap baris, pola, dan struktur menggunakan model AI arsitektural kami.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center mb-8 z-10">
+<span class="material-symbols-outlined text-4xl text-primary" style="">auto_awesome</span>
+</div>
+<h3 class="text-xl font-bold mb-4" style="">Hasil &amp; Optimasi</h3>
+<p class="text-on-surface-variant text-sm px-4" style="">Terima laporan mendalam dan PR otomatis untuk memperbaiki isu yang ditemukan.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Footer -->
+<section class="py-24 px-6">
+<div class="max-w-5xl mx-auto glass-panel rounded-3xl p-12 border border-outline-variant/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="">architecture</span>
+</div>
+<div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+<div class="max-w-xl text-center lg:text-left">
+<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-6" style="">Siap Mengoptimalkan Kode Anda?</h2>
+<p class="text-on-surface-variant text-lg" style="">Bergabunglah dengan ribuan pengembang yang telah meningkatkan standar kualitas repositori mereka bersama Mistletoe.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+<a class="primary-gradient text-on-primary font-bold px-10 py-5 rounded-lg text-lg shadow-xl shadow-primary/20 whitespace-nowrap text-center inline-block" href="{{DATA:SCREEN:SCREEN_19}}" style="">Mulai Sekarang — Gratis</a>
+</div>
+</div>
+</div>
+<!-- Simple Footer Links -->
+<div class="max-w-7xl mx-auto mt-24 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<span class="text-xl font-bold text-[#dde3ef] tracking-tighter font-['Space_Grotesk']" style="">Mistletoe</span>
+<span class="text-on-surface-variant text-sm" style="">© 2024 Analysis Engine.</span>
+</div>
+<div class="flex gap-8 text-sm font-medium text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#" style="">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#" style="">Terms</a>
+<a class="hover:text-primary transition-colors" href="#" style="">Security</a>
+<a class="hover:text-primary transition-colors" href="#" style="">Contact</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (Hidden on Landing unless scrolled) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 rounded-full primary-gradient text-on-primary shadow-2xl flex items-center justify-center z-50 hover:scale-110 transition-transform md:hidden" style="">
+<span class="material-symbols-outlined" style="">add</span>
+</button>
+</body></html>

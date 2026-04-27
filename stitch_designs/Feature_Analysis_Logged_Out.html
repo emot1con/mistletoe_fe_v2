@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monolith AI | New Feature Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#dde3ef",
+                        "secondary-fixed-dim": "#7dd5d5",
+                        "primary": "#55d8e1",
+                        "surface": "#0e141c",
+                        "on-primary-container": "#003a3d",
+                        "on-error": "#690005",
+                        "on-background": "#dde3ef",
+                        "tertiary": "#ffb68d",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-dim": "#0e141c",
+                        "surface-bright": "#343a43",
+                        "background": "#0e141c",
+                        "outline": "#869394",
+                        "inverse-primary": "#00696e",
+                        "surface-variant": "#2f353e",
+                        "on-primary-fixed-variant": "#004f53",
+                        "surface-container-highest": "#2f353e",
+                        "on-surface": "#dde3ef",
+                        "surface-container-high": "#242a33",
+                        "on-tertiary-fixed": "#331200",
+                        "surface-container-lowest": "#080f17",
+                        "on-tertiary": "#532200",
+                        "secondary": "#7dd5d5",
+                        "on-primary-fixed": "#002022",
+                        "on-surface-variant": "#bbc9ca",
+                        "on-secondary-fixed": "#002020",
+                        "tertiary-container": "#e2844a",
+                        "on-secondary": "#003737",
+                        "primary-fixed": "#75f5fd",
+                        "outline-variant": "#3c494a",
+                        "surface-tint": "#55d8e1",
+                        "on-secondary-container": "#9ff7f7",
+                        "on-secondary-fixed-variant": "#004f50",
+                        "surface-container-low": "#161c25",
+                        "surface-container": "#1a2029",
+                        "on-primary": "#003739",
+                        "on-tertiary-container": "#582500",
+                        "primary-container": "#00adb5",
+                        "secondary-container": "#007475",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary-fixed-dim": "#55d8e1",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#2b313a",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#99f1f1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e141c;
+            color: #dde3ef;
+        }
+        .glass-card {
+            background: rgba(36, 42, 51, 0.4);
+            backdrop-filter: blur(24px);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(85, 216, 225, 0.1), transparent);
+            background-size: 200% 100%;
+        }
+        .pulse-orb {
+            box-shadow: 0 0 40px rgba(85, 216, 225, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="flex flex-col h-full py-8 px-4 h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#161c25] dark:bg-[#161c25] font-['Space_Grotesk'] text-sm tracking-tight z-50">
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="terminal">terminal</span>
+</div>
+<div>
+<h1 class="font-headline font-bold text-[#dde3ef] text-xl leading-none">Wistletoe</h1>
+<p class="text-[10px] text-on-surface-variant font-medium tracking-widest uppercase mt-1">Analysis Engine</p>
+</div>
+</div>
+<nav class="space-y-1 flex-1">
+<a class="bg-[#242a33] text-[#55d8e1] rounded-md flex items-center gap-3 px-3 py-2.5 font-medium text-sm transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-[#bbc9ca] hover:bg-[#242a33] hover:text-[#dde3ef] rounded-md flex items-center gap-3 px-3 py-2.5 font-medium text-sm transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span>Repositories</span>
+</a>
+<a class="text-[#bbc9ca] hover:bg-[#242a33] hover:text-[#dde3ef] rounded-md flex items-center gap-3 px-3 py-2.5 font-medium text-sm transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>History</span>
+</a>
+<a class="text-[#bbc9ca] hover:bg-[#242a33] hover:text-[#dde3ef] rounded-md flex items-center gap-3 px-3 py-2.5 font-medium text-sm transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/15">
+<button class="w-full bg-[#242a33] text-on-surface hover:bg-[#2f353e] font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg active:scale-95 transition-transform">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    Connect GitHub
+                </button>
+<div class="mt-6 space-y-1">
+<a class="text-[#bbc9ca] hover:text-[#dde3ef] flex items-center gap-3 px-3 py-2 text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                        Docs
+                    </a>
+<a class="text-[#bbc9ca] hover:text-[#dde3ef] flex items-center gap-3 px-3 py-2 text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_outline">help_outline</span>
+                        Support
+                    </a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-8 ml-64 max-w-[calc(100%-16rem)] h-16 sticky top-0 z-40 bg-[#0e141c]/80 backdrop-blur-xl font-['Space_Grotesk'] font-medium">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#00adb5]" data-icon="terminal">terminal</span>
+<span class="font-black text-[#00adb5] tracking-tight">Monolith AI</span>
+</div>
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/10 min-w-[300px]">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-full" placeholder="Search documentation..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:text-[#55d8e1] transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="px-4 py-1.5 border border-outline-variant rounded text-sm hover:bg-surface-container-high transition-colors">
+            Login
+        </button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 p-8 min-h-[calc(100vh-4rem)] bg-surface flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Subtle Architectural Background Accents -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px] -z-10"></div>
+<!-- Content Container -->
+<div class="w-full max-w-[800px] space-y-12">
+<!-- Empty State / Login Prompt -->
+<div class="text-center space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="flex justify-center">
+<div class="relative">
+<div class="w-32 h-32 rounded-3xl bg-surface-container-high border border-outline-variant/20 flex items-center justify-center rotate-3 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+<svg class="text-on-surface/80" fill="currentColor" height="64" viewbox="0 0 24 24" width="64"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</div>
+<div class="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-primary flex items-center justify-center border-4 border-surface shadow-xl">
+<span class="material-symbols-outlined text-on-primary text-xl" data-icon="hub">hub</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h1 class="text-4xl font-headline font-black tracking-tighter text-on-surface">
+                    Connect your codebase to begin analysis
+                </h1>
+<p class="text-on-surface-variant font-body max-w-lg mx-auto text-lg leading-relaxed">
+                    Analyze your repository architecture, estimate effort, and visualize technical impact with AI.
+                </p>
+</div>
+<div class="flex flex-col items-center gap-4">
+<button class="px-10 py-4 bg-[#24292e] text-white font-headline font-bold rounded-xl transition-all hover:shadow-[0_0_30px_rgba(36,41,46,0.4)] hover:scale-[1.02] active:scale-95 flex items-center gap-3 text-lg">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+<span>Connect with GitHub</span>
+</button>
+<p class="text-xs text-on-surface-variant/60">No payment method required to start</p>
+</div>
+</div>
+<!-- Additional Context Section (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+<div class="col-span-1 glass-card p-6 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="schema">schema</span>
+<h4 class="font-headline font-bold text-sm mb-2">Architectural Mapping</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Automatically map the impact of new features across your microservices or modules.</p>
+</div>
+<div class="col-span-1 glass-card p-6 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="monitoring">monitoring</span>
+<h4 class="font-headline font-bold text-sm mb-2">Effort Estimation</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Get accurate story point and developer hour estimates based on historical commit density.</p>
+</div>
+<div class="col-span-1 glass-card p-6 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary mb-4" data-icon="lightbulb">lightbulb</span>
+<h4 class="font-headline font-bold text-sm mb-2">Smart Alternatives</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Identify refactoring opportunities that could simplify your feature implementation.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Identity (Semantic Shell) -->
+<footer class="ml-64 py-8 px-12 bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 grayscale opacity-40">
+<span class="material-symbols-outlined" data-icon="token">token</span>
+<span class="font-headline font-bold tracking-tighter">Wistletoe Analysis Engine</span>
+</div>
+<div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">API Reference</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

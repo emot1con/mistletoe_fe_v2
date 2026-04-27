@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wistletoe - Account Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#080f17",
+                      "primary": "#55d8e1",
+                      "surface-container-high": "#242a33",
+                      "surface-bright": "#343a43",
+                      "surface": "#0e141c",
+                      "outline": "#869394",
+                      "on-primary-fixed-variant": "#004f53",
+                      "on-secondary-container": "#9ff7f7",
+                      "tertiary": "#ffb68d",
+                      "on-secondary-fixed": "#002020",
+                      "on-surface-variant": "#bbc9ca",
+                      "surface-dim": "#0e141c",
+                      "inverse-surface": "#dde3ef",
+                      "primary-fixed": "#75f5fd",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "on-secondary": "#003737",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#1a2029",
+                      "primary-container": "#00adb5",
+                      "on-tertiary-fixed": "#331200",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "secondary-fixed": "#99f1f1",
+                      "inverse-on-surface": "#2b313a",
+                      "secondary-container": "#007475",
+                      "on-primary": "#003739",
+                      "on-surface": "#dde3ef",
+                      "surface-container-highest": "#2f353e",
+                      "secondary-fixed-dim": "#7dd5d5",
+                      "on-primary-container": "#003a3d",
+                      "on-error": "#690005",
+                      "background": "#0e141c",
+                      "surface-variant": "#2f353e",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#ffdbc9",
+                      "outline-variant": "#3c494a",
+                      "on-secondary-fixed-variant": "#004f50",
+                      "on-tertiary": "#532200",
+                      "primary-fixed-dim": "#55d8e1",
+                      "on-tertiary-container": "#582500",
+                      "tertiary-container": "#e2844a",
+                      "on-background": "#dde3ef",
+                      "inverse-primary": "#00696e",
+                      "on-primary-fixed": "#002022",
+                      "secondary": "#7dd5d5",
+                      "surface-tint": "#55d8e1",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#161c25"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "display": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e141c;
+        }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (from JSON logic) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#161c25] dark:bg-[#161c25] flex flex-col p-6 space-y-8 z-50">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h1 class="font-['Space_Grotesk'] font-bold text-[#55d8e1] text-xl tracking-tighter">Wistletoe</h1>
+<p class="font-['Space_Grotesk'] text-[10px] text-on-surface-variant uppercase tracking-[0.2em]">Repo Analysis</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center space-x-3 px-4 py-3 text-[#bbc9ca] hover:text-[#dde3ef] transition-colors hover:bg-[#242a33] rounded-md group font-['Space_Grotesk'] text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-[#bbc9ca] hover:text-[#dde3ef] transition-colors hover:bg-[#242a33] rounded-md group font-['Space_Grotesk'] text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">database</span>
+<span>Repositories</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-[#bbc9ca] hover:text-[#dde3ef] transition-colors hover:bg-[#242a33] rounded-md group font-['Space_Grotesk'] text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-[#55d8e1] font-bold bg-[#242a33] rounded-md font-['Space_Grotesk'] text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex items-center space-x-3 p-2">
+<img alt="Wistletoe Logo" class="w-10 h-10 rounded-lg object-cover grayscale opacity-80 hover:grayscale-0 transition-all" data-alt="close-up portrait of a tech professional man with glasses against a dark architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaX_nMww5CTbzAkqKJIDX0RrqZyBUAu54hz12XqxaU5XyybRay1ukdgAokhB04hJGgRR65odPMF8lecccnuAu0usZAYilZLjEUIpLjYuttAle__QsTH2lkXanRzCRaW9i_xAjeoLN0FseY87L5s08UURP1ynzvjnb-IIDg7uH0U1X2eQ_JbgwH54UY-8mTEFggFI7vDn4L8dP4Q8A0PZN7Hp_fy6peHH0GfFJwS88nHIbHxpWsnMbxSoUK-VcRAtFaoMa_g9MOM0_9"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant truncate">PRO ARCHITECT</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (from JSON logic) -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-[#0e141c]/80 backdrop-blur-xl flex justify-between items-center px-8 w-full">
+<div class="flex-1 max-w-md">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-md py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-[#55d8e1] transition-all placeholder:text-outline/50" placeholder="Search architecture, Repos, or Ledger..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="relative text-[#bbc9ca] hover:text-[#55d8e1] transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-[#bbc9ca] hover:text-[#55d8e1] transition-opacity">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/20 mx-2"></div>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant/30" data-alt="professional male portrait avatar with neutral lighting and minimalist tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPauBZ2sTlGFGh20uvXTzhO0cCSj1NTKDNUC1QPSeAXT0DMumag5gAJgINb_Cz3hcZ4zIMYU3JjTvbbLekLjdj7Xg0EhJHDND5FMe8qEKXI3wg0X7dObJF9Gtfdh7CYqWlbiGewUcQQMNUQ2f8HDG4u3hfJE2LxfJXN3HbgLrE63D5YBEQMSNDo66pyAj1t6gVGyDwinlbZbQ21F8YVC8CcswOdcj0rEr8R1OXzTf_FxPuYcPizzhR71_A4uHgXYHOM_EoLacsesfr"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-10 min-h-screen">
+<header class="mb-12">
+<h2 class="font-headline text-4xl font-bold tracking-tight text-on-surface mb-2">Account Architecture</h2>
+<p class="text-on-surface-variant font-light text-lg">Precision control over your repository intelligence workspace.</p>
+</header>
+<!-- Section 1: User Profile & Valuation Core -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<!-- Profile Card -->
+<div class="lg:col-span-7 bg-surface-container-high rounded-xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-9xl">person</span>
+</div>
+<div class="relative">
+<img class="w-32 h-32 rounded-xl object-cover grayscale" data-alt="close up headshot of a developer man looking forward with soft professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpbFiWK0-TIFsOm6oeA2vOrw1AOW-brsus1R90XTwJ5HD1hX0US6LcHIBIDPeFJuUXlLWw_xXwj46IzjnvRRuyvHc6QglYD0AAhisk2iyEWb_gI4FQ_eLAEZ5JKxMYZVgx6cEZFhsOEOgAywjIsgxEU70RgHNbN6x82FRC19twjshrgmZPmu6ukFWHAj_-25xrIX7rmBPxzS1C5Cwk2Yun0UYJIBudW_9DfbePPBAHMClICwuw3SFuGbpNY2f4hTq0R-gCDXKmWNRz"/>
+<div class="absolute -bottom-2 -right-2 bg-primary p-2 rounded-lg text-on-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<div>
+<h3 class="font-headline text-2xl font-bold">Alex Rivera</h3>
+<p class="text-primary font-mono text-sm">@arivero_dev</p>
+</div>
+<div class="flex items-center space-x-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary-container text-secondary">
+<span class="material-symbols-outlined text-[10px] mr-1" style="font-variation-settings: 'FILL' 1;">hub</span>
+                            Connected to GitHub
+                        </span>
+</div>
+<button class="mt-4 px-6 py-2 bg-surface-container-highest border border-outline-variant/30 rounded-lg text-sm font-medium hover:bg-surface-bright transition-all active:scale-95">
+                        Refresh Data
+                    </button>
+</div>
+</div>
+<!-- Valuation Core Card -->
+<div class="lg:col-span-5 bg-surface-container-high rounded-xl p-8 shadow-2xl border-l-4 border-primary">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-xl font-bold uppercase tracking-widest text-primary/80">Valuation Core</h3>
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Global Analysis Rate (USD)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-outline">$</span>
+<input class="w-full bg-surface-container-lowest border-none border-b-2 border-outline focus:border-primary py-4 pl-8 pr-4 font-headline text-2xl text-on-surface transition-all outline-none" type="text" value="125"/>
+</div>
+</div>
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold rounded-lg hover:shadow-[0_0_20px_rgba(85,216,225,0.3)] transition-all active:scale-[0.98]">
+                        Save Changes
+                    </button>
+</div>
+</div>
+</div>
+<!-- Section 2: Subscription Plan -->
+<div class="bg-surface-container-low rounded-xl p-10 mb-12 relative overflow-hidden border border-outline-variant/10">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="flex items-center space-x-3 mb-4">
+<h2 class="font-headline text-5xl font-black tracking-tighter text-on-surface">WISTLETOE PRO</h2>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-1 rounded tracking-tighter">ANNUAL</span>
+</div>
+<p class="text-on-surface-variant max-w-sm">Elevated intelligence suite with unlimited deep-scanning and private repo integration.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-high rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Next Invoice</p>
+<p class="font-headline text-lg font-bold">Oct 12, 2024</p>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Method</p>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<p class="font-headline text-lg font-bold">Visa · 8291</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Recent Ledger Entries -->
+<div class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-xl font-bold">Recent Ledger Entries</h3>
+<button class="text-primary text-xs font-bold uppercase tracking-widest flex items-center hover:underline">
+                    Download Full Export <span class="material-symbols-outlined text-sm ml-1">download</span>
+</button>
+</div>
+<div class="bg-surface-container-high rounded-xl overflow-hidden shadow-xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/50">
+<th class="px-8 py-5 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Transaction ID</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Date</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Description</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Amount</th>
+<th class="px-8 py-5 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-4 font-mono text-xs text-primary">#TX-99201-B</td>
+<td class="px-8 py-4 text-sm">Sep 12, 2024</td>
+<td class="px-8 py-4 text-sm font-medium">Monthly Intelligence Seat (Pro)</td>
+<td class="px-8 py-4 font-headline font-bold">$125.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-secondary-container/30 text-secondary border border-secondary/20">Paid</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-4 font-mono text-xs text-primary">#TX-99042-A</td>
+<td class="px-8 py-4 text-sm">Aug 12, 2024</td>
+<td class="px-8 py-4 text-sm font-medium">Monthly Intelligence Seat (Pro)</td>
+<td class="px-8 py-4 font-headline font-bold">$125.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-secondary-container/30 text-secondary border border-secondary/20">Paid</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-4 font-mono text-xs text-primary">#TX-98781-C</td>
+<td class="px-8 py-4 text-sm">Jul 12, 2024</td>
+<td class="px-8 py-4 text-sm font-medium">Architecture Audit Fee</td>
+<td class="px-8 py-4 font-headline font-bold">$450.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-secondary-container/30 text-secondary border border-secondary/20">Paid</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section 4: Danger Zone -->
+<div class="border-2 border-error-container/30 rounded-xl p-8 bg-surface-container-lowest/50">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-error">warning</span>
+<h3 class="font-headline text-xl font-bold text-error">Danger Zone</h3>
+</div>
+<div class="flex flex-col md:flex-row justify-between gap-6">
+<div class="max-w-md">
+<p class="text-sm font-bold mb-1">Destructive Operations</p>
+<p class="text-xs text-on-surface-variant">These actions are irreversible. Clearing history will delete all training data models, and account deletion will purge all repository insights from our monolith.</p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-3 border border-outline-variant hover:bg-surface-container-high rounded-lg text-xs font-bold uppercase tracking-widest transition-all">
+                        Clear Analysis History
+                    </button>
+<button class="px-6 py-3 bg-error-container text-on-error-container hover:bg-error rounded-lg text-xs font-bold uppercase tracking-widest transition-all active:scale-95">
+                        Delete Account
+                    </button>
+</div>
+</div>
+</div>
+<!-- Footer Spacer -->
+<div class="h-20"></div>
+</main>
+</body></html>

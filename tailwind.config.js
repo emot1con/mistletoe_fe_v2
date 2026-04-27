@@ -1,0 +1,73 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "surface-variant": "#2f353e",
+        "surface-container-highest": "#2f353e",
+        "on-tertiary": "#532200",
+        "surface-tint": "#55d8e1",
+        "secondary-container": "#007475",
+        "surface-dim": "#0e141c",
+        "error": "#ffb4ab",
+        "on-background": "#dde3ef",
+        "surface": "#0e141c",
+        "on-tertiary-fixed-variant": "#763300",
+        "on-secondary-fixed": "#002020",
+        "inverse-on-surface": "#2b313a",
+        "on-tertiary-container": "#582500",
+        "tertiary-fixed-dim": "#ffb68d",
+        "tertiary": "#ffb68d",
+        "surface-container-lowest": "#080f17",
+        "on-primary": "#003739",
+        "error-container": "#93000a",
+        "inverse-primary": "#00696e",
+        "on-secondary-fixed-variant": "#004f50",
+        "on-primary-container": "#003a3d",
+        "surface-container-high": "#242a33",
+        "surface-container-low": "#161c25",
+        "secondary-fixed-dim": "#7dd5d5",
+        "secondary-fixed": "#99f1f1",
+        "outline-variant": "#3c494a",
+        "on-primary-fixed-variant": "#004f53",
+        "surface-container": "#1a2029",
+        "on-secondary-container": "#9ff7f7",
+        "primary": "#55d8e1",
+        "tertiary-container": "#e2844a",
+        "outline": "#869394",
+        "on-tertiary-fixed": "#331200",
+        "on-primary-fixed": "#002022",
+        "tertiary-fixed": "#ffdbc9",
+        "surface-bright": "#343a43",
+        "secondary": "#7dd5d5",
+        "primary-fixed-dim": "#55d8e1",
+        "primary-fixed": "#75f5fd",
+        "on-surface": "#dde3ef",
+        "primary-container": "#00adb5",
+        "on-surface-variant": "#bbc9ca",
+        "on-error": "#690005",
+        "inverse-surface": "#dde3ef",
+        "background": "#0e141c",
+        "on-error-container": "#ffdad6",
+        "on-secondary": "#003737"
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      fontFamily: {
+        "headline": ["Space Grotesk", "sans-serif"],
+        "body": ["Inter", "sans-serif"],
+        "label": ["Inter", "sans-serif"]
+      }
+    },
+  },
+  plugins: [],
+}

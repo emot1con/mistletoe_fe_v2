@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wistletoe - Repository Selector</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space_Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#2f353e",
+                    "secondary-fixed-dim": "#7dd5d5",
+                    "primary-container": "#00adb5",
+                    "outline-variant": "#3c494a",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-error": "#690005",
+                    "surface-container-low": "#161c25",
+                    "on-secondary-container": "#9ff7f7",
+                    "surface-container-high": "#242a33",
+                    "on-background": "#dde3ef",
+                    "surface-bright": "#343a43",
+                    "inverse-on-surface": "#2b313a",
+                    "surface": "#0e141c",
+                    "secondary-container": "#007475",
+                    "outline": "#869394",
+                    "on-tertiary-fixed": "#331200",
+                    "inverse-primary": "#00696e",
+                    "surface-tint": "#55d8e1",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-secondary": "#003737",
+                    "primary-fixed-dim": "#55d8e1",
+                    "secondary-fixed": "#99f1f1",
+                    "on-surface-variant": "#bbc9ca",
+                    "on-tertiary": "#532200",
+                    "surface-container": "#1a2029",
+                    "tertiary-container": "#e2844a",
+                    "secondary": "#7dd5d5",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#002020",
+                    "surface-container-lowest": "#080f17",
+                    "on-primary-container": "#003a3d",
+                    "on-primary-fixed-variant": "#004f53",
+                    "on-primary-fixed": "#002022",
+                    "primary-fixed": "#75f5fd",
+                    "background": "#0e141c",
+                    "on-surface": "#dde3ef",
+                    "surface-container-highest": "#2f353e",
+                    "primary": "#55d8e1",
+                    "error": "#ffb4ab",
+                    "tertiary": "#ffb68d",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-container": "#582500",
+                    "on-primary": "#003739",
+                    "inverse-surface": "#dde3ef",
+                    "surface-dim": "#0e141c",
+                    "on-secondary-fixed-variant": "#004f50",
+                    "tertiary-fixed-dim": "#ffb68d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0e141c;
+            color: #dde3ef;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #080f17;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #242a33;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-[#161c25] w-72 shadow-[24px_0_48px_rgba(0,0,0,0.4)] z-50">
+<div class="px-8 mb-10">
+<h1 class="font-['Space_Grotesk'] font-bold text-[#dde3ef] text-2xl tracking-tight">Wistletoe</h1>
+<p class="text-[0.75rem] text-[#bbc9ca] uppercase tracking-widest mt-1">Repo Analysis</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center text-[#bbc9ca] hover:bg-[#242a33]/50 mx-2 my-1 px-4 py-3 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">grid_view</span>
+<span class="font-['Inter'] font-medium text-[0.875rem]">Dashboard</span>
+</a>
+<!-- Active: Repositories -->
+<a class="flex items-center bg-[#242a33] text-[#55d8e1] rounded-lg mx-2 my-1 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">database</span>
+<span class="font-['Inter'] font-medium text-[0.875rem]">Repositories</span>
+</a>
+<!-- History -->
+<a class="flex items-center text-[#bbc9ca] hover:bg-[#242a33]/50 mx-2 my-1 px-4 py-3 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">history</span>
+<span class="font-['Inter'] font-medium text-[0.875rem]">History</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center text-[#bbc9ca] hover:bg-[#242a33]/50 mx-2 my-1 px-4 py-3 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-['Inter'] font-medium text-[0.875rem]">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<a class="flex items-center text-[#bbc9ca] hover:bg-[#242a33]/50 mx-2 my-1 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">menu_book</span>
+<span class="font-['Inter'] font-medium text-[0.875rem]">Documentation</span>
+</a>
+<a class="flex items-center text-[#bbc9ca] hover:bg-[#242a33]/50 mx-2 my-1 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="font-['Inter'] font-medium text-[0.875rem]">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 flex-1 flex flex-col min-h-screen relative pb-24">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center w-full px-12 py-6 sticky top-0 z-40 bg-[#0e141c]">
+<div class="flex flex-col">
+<h2 class="font-['Space_Grotesk'] text-3xl font-bold text-[#00ADB5] tracking-[-0.02em]">Select Repositories</h2>
+<p class="text-on-surface-variant text-sm mt-1">Choose the projects you want to analyze with Wistletoe.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#bbc9ca] hover:text-[#55d8e1] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#bbc9ca] hover:text-[#55d8e1] transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a male software engineer with glasses in a professional studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJRUVSnq4NQH51k9bZ0Vtxil6JC0NJU8CfVso4WpnyBeR2ejrpwBZkCnzuCWejq7QFP_drblLOpKbEFMY_TU1TQvIT03MLeLcKkrsWaik2visuNSgvKYAQQdREOB3k68mlofA7KmH9cDN8no-yYq_kuiMzoeDfIiGs7f2nXjhXU_q9Fd_TWuqM06YZNtA3Ls_o08oIOunB0rZNzrNIE8e3JRbCeVcFZtQFGxKIB5XGiIWzNnrHbGTFIuKYSbUpiPtPLt9anuBaF9KT"/>
+</div>
+</div>
+</header>
+<!-- Search & Filter Bar -->
+<section class="px-12 py-4">
+<div class="bg-surface-container-high rounded-xl p-6 flex flex-wrap gap-4 items-center">
+<!-- Search -->
+<div class="flex-1 min-w-[300px] relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border-none border-b-2 border-outline focus:border-primary focus:ring-0 text-on-surface pl-12 pr-4 py-3 rounded-t-lg transition-all placeholder:text-outline-variant/60" placeholder="Search repository name..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 pr-10 text-sm text-on-surface-variant focus:ring-1 focus:ring-primary focus:border-primary outline-none">
+<option>All Languages</option>
+<option>TypeScript</option>
+<option>JavaScript</option>
+<option>Python</option>
+<option>Rust</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-xs">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 pr-10 text-sm text-on-surface-variant focus:ring-1 focus:ring-primary focus:border-primary outline-none">
+<option>Type: All</option>
+<option>Public</option>
+<option>Private</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-xs">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Repository List (Asymmetric Bento-ish List) -->
+<section class="px-12 py-6 flex-1">
+<div class="space-y-4">
+<!-- List Header -->
+<div class="flex items-center px-6 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-60">
+<div class="w-10">
+<input class="rounded bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1">Repository Details</div>
+<div class="w-32 text-center">Language</div>
+<div class="w-40 text-right">Metrics</div>
+</div>
+<!-- Repo Items -->
+<div class="group flex items-center bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 p-6 rounded-xl relative overflow-hidden border-l-4 border-transparent hover:border-primary/40">
+<div class="w-10 flex items-center">
+<input class="rounded bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">mistletoe-core-engine</h3>
+<span class="px-2 py-0.5 text-[10px] font-bold bg-secondary-container/30 text-secondary border border-secondary/20 rounded-sm">PUBLIC</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1 max-w-xl line-clamp-1">Main analysis engine for repository metadata and structural integrity scanning.</p>
+</div>
+<div class="w-32 flex justify-center">
+<span class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-blue-400"></span> TypeScript
+                    </span>
+</div>
+<div class="w-40 flex justify-end gap-6 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="text-sm font-mono">1.2k</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span class="text-sm font-mono">342</span>
+</div>
+</div>
+</div>
+<div class="group flex items-center bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 p-6 rounded-xl relative overflow-hidden border-l-4 border-transparent hover:border-primary/40">
+<div class="w-10 flex items-center">
+<input checked="" class="rounded bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">web-interface-v3</h3>
+<span class="px-2 py-0.5 text-[10px] font-bold bg-tertiary-container/30 text-tertiary border border-tertiary/20 rounded-sm">PRIVATE</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1 max-w-xl line-clamp-1">Responsive dashboard built with React and Tailwind CSS for Wistletoe users.</p>
+</div>
+<div class="w-32 flex justify-center">
+<span class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-yellow-400"></span> JavaScript
+                    </span>
+</div>
+<div class="w-40 flex justify-end gap-6 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="text-sm font-mono">85</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span class="text-sm font-mono">12</span>
+</div>
+</div>
+</div>
+<div class="group flex items-center bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 p-6 rounded-xl relative overflow-hidden border-l-4 border-transparent hover:border-primary/40">
+<div class="w-10 flex items-center">
+<input class="rounded bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">data-science-toolkit</h3>
+<span class="px-2 py-0.5 text-[10px] font-bold bg-secondary-container/30 text-secondary border border-secondary/20 rounded-sm">PUBLIC</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1 max-w-xl line-clamp-1">Collection of utility scripts for data processing and model evaluation.</p>
+</div>
+<div class="w-32 flex justify-center">
+<span class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span> Python
+                    </span>
+</div>
+<div class="w-40 flex justify-end gap-6 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="text-sm font-mono">4.1k</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span class="text-sm font-mono">1.1k</span>
+</div>
+</div>
+</div>
+<div class="group flex items-center bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 p-6 rounded-xl relative overflow-hidden border-l-4 border-transparent hover:border-primary/40">
+<div class="w-10 flex items-center">
+<input checked="" class="rounded bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">infrastructure-as-code</h3>
+<span class="px-2 py-0.5 text-[10px] font-bold bg-secondary-container/30 text-secondary border border-secondary/20 rounded-sm">PUBLIC</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1 max-w-xl line-clamp-1">Terraform and Ansible scripts for automated cloud deployment.</p>
+</div>
+<div class="w-32 flex justify-center">
+<span class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-purple-500"></span> HCL
+                    </span>
+</div>
+<div class="w-40 flex justify-end gap-6 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="text-sm font-mono">210</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span class="text-sm font-mono">45</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-18rem)] bg-surface-container-low/90 backdrop-blur-xl border-t border-outline-variant/20 px-12 py-4 z-40">
+<div class="flex justify-between items-center max-w-6xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary border border-primary/20">
+<span class="font-headline font-bold">2</span>
+</div>
+<p class="text-on-surface font-medium">Repositori dipilih</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 text-on-surface-variant font-medium hover:text-on-surface transition-colors">
+                    Cancel
+                </button>
+<button class="px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-lg shadow-lg shadow-primary/20 hover:brightness-110 active:scale-[0.98] transition-all" onclick="window.location.href='{{DATA:SCREEN:SCREEN_13}}'">
+                    Add Repositories
+                </button>
+</div>
+</div>
+</footer>
+</main>
+<!-- Decorative Background Elements -->
+<div class="fixed top-0 right-0 -z-10 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-0 left-72 -z-10 w-[300px] h-[300px] bg-secondary/5 blur-[100px] rounded-full pointer-events-none"></div>
+</body></html>
