@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import { mistletoeApi } from '../api/endpoints';
-import type { AnalysisResult } from '../types';
+import type { AnalysisResult, ExportJob } from '../types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 export default function AnalysisDetailPage() {
@@ -10,6 +10,8 @@ export default function AnalysisDetailPage() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isExporting, setIsExporting] = useState(false);
+  const [isExportingToGithub, setIsExportingToGithub] = useState(false);
+  const [exportJob, setExportJob] = useState<ExportJob | null>(null);
   const navigate = useNavigate();
 
   const TIER_LABELS = ['MVP', 'Balanced', 'Comprehensive'] as const;
@@ -68,9 +70,36 @@ export default function AnalysisDetailPage() {
     }
   };
 
-  const handleShare = () => {
-    alert("Share link copied to clipboard!");
-  }
+  const handleExportToGithub = async () => {
+    if (!id || isExportingToGithub) return;
+    
+    setIsExportingToGithub(true);
+    try {
+        const job = await mistletoeApi.exportToGithubIssue(id);
+        setExportJob(job);
+        
+        // Start polling
+        const pollInterval = setInterval(async () => {
+            try {
+                const status = await mistletoeApi.getExportStatus(job.id);
+                setExportJob(status);
+                
+                if (status.status === 'completed' || status.status === 'failed') {
+                    clearInterval(pollInterval);
+                    setIsExportingToGithub(false);
+                }
+            } catch (err) {
+                console.error('Failed to poll export status', err);
+                clearInterval(pollInterval);
+                setIsExportingToGithub(false);
+            }
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to start export', err);
+        setIsExportingToGithub(false);
+        alert('Failed to start GitHub export');
+    }
+  };
 
   if (isLoading) {
     return (
@@ -156,12 +185,38 @@ export default function AnalysisDetailPage() {
             >
               <span className={`material-symbols-outlined text-[20px] ${isSaved ? 'fill-[1]' : ''}`} data-icon="bookmark">bookmark</span>
             </button>
+            {exportJob?.status === 'completed' && exportJob.github_issue_url && (
+              <a 
+                href={exportJob.github_issue_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 bg-primary/10 text-primary border border-primary/20 rounded-lg flex items-center gap-2 hover:bg-primary/20 transition-colors text-xs font-bold uppercase tracking-wider"
+              >
+                <span className="material-symbols-outlined text-[16px]" data-icon="open_in_new">open_in_new</span>
+                View Issue
+              </a>
+            )}
             <button 
-              onClick={handleShare}
-              className="px-4 py-2.5 bg-surface-container-high text-on-surface rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors text-xs font-bold uppercase tracking-wider"
+              onClick={handleExportToGithub}
+              disabled={isExportingToGithub || exportJob?.status === 'completed'}
+              className="px-4 py-2.5 bg-surface-container-high text-on-surface rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors text-xs font-bold uppercase tracking-wider disabled:opacity-50"
             >
-              <span className="material-symbols-outlined text-[16px]" data-icon="share">share</span>
-              Share Report
+              {isExportingToGithub ? (
+                 <>
+                   <span className="material-symbols-outlined text-[16px] animate-spin" data-icon="sync">sync</span>
+                   Exporting...
+                 </>
+              ) : exportJob?.status === 'completed' ? (
+                 <>
+                   <span className="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+                   Exported
+                 </>
+              ) : (
+                 <>
+                   <span className="material-symbols-outlined text-[16px]" data-icon="send">send</span>
+                   Send to Github Issue
+                 </>
+              )}
             </button>
             <button 
               onClick={handleExportPdf}

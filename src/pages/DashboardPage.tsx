@@ -114,7 +114,7 @@ export default function DashboardPage() {
                 <path d="M0,120 Q50,100 100,110 T200,60 T300,80 T400,30" fill="none" stroke="#55d8e1" strokeLinecap="round" strokeWidth="3"></path>
               </svg>
               <div className="absolute bottom-0 left-0 w-full flex justify-between px-2 text-[10px] text-on-surface-variant font-medium">
-                {analytics?.monthly_effort.slice(-7).map((e) => (
+                {analytics?.monthly_effort?.slice(-7).map((e) => (
                   <span key={e.date}>{new Date(e.date).toLocaleDateString('en-US', { weekday: 'short' })}</span>
                 )) || (
                   ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => <span key={d}>{d}</span>)
@@ -127,7 +127,7 @@ export default function DashboardPage() {
             <div className="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
               <h3 className="font-headline text-sm font-bold mb-6">Top Impacted Areas</h3>
               <div className="space-y-4">
-                {analytics?.top_impacted_areas.slice(0, 4).map((area) => (
+                {analytics?.top_impacted_areas?.slice(0, 4).map((area) => (
                   <div key={area.component} className="flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-secondary"></span>
@@ -144,7 +144,7 @@ export default function DashboardPage() {
             <div className="bg-surface-container p-6 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
               <h3 className="font-headline text-sm font-bold mb-4">Top Repositories</h3>
                <div className="space-y-4">
-                {analytics?.top_repositories.slice(0, 3).map((repo) => (
+                {analytics?.top_repositories?.slice(0, 3).map((repo) => (
                   <div key={repo.full_name} className="flex justify-between items-center bg-surface-container-lowest p-2 rounded">
                     <span className="text-[10px] text-on-surface-variant truncate max-w-[150px]">{repo.full_name}</span>
                     <span className="text-[10px] font-bold text-primary">{repo.analysis_count} scans</span>

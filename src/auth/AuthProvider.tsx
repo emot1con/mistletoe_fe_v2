@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { getAuthTokens, clearAuthTokens, backendLogout, AUTH_ERROR_EVENT } from '../api/client';
 import { AuthContext } from './AuthContext';
@@ -13,11 +13,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [tokens, setTokens] = useState<AuthTokens>({ access: null, refresh: null, userId: null });
     const [isLoading, setIsLoading] = useState(true);
 
-    const checkAuth = () => {
+    const checkAuth = useCallback(() => {
         const stored = getAuthTokens();
         setTokens(stored);
         setIsLoading(false);
-    };
+    }, []);
 
     useEffect(() => {
         const handleAuthError = () => {
