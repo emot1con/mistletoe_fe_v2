@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AuthProvider } from './auth/AuthProvider';
 import { useAuth } from './auth/useAuth';
@@ -68,13 +68,27 @@ function ProtectedPage({ component: Component }: { component: React.ComponentTyp
   return <Component />;
 }
 
+function IndexPage() {
+  const { isAuthenticated, isLoading } = useAuth();
+  
+  if (isLoading) {
+    return <FullScreenSkeleton />;
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+  
+  return <LandingPagePage />;
+}
+
 function AppRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         {/* Public */}
-        <Route path="/" element={<LandingPagePage />} />
+        <Route path="/" element={<IndexPage />} />
         <Route path="/auth/callback" element={<CallbackPage />} />
 
         {/* Auth-Aware: show logged-out version if not authenticated */}

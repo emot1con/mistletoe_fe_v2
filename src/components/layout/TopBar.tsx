@@ -2,7 +2,7 @@ import { useAuth } from '../../auth/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 export default function TopBar() {
-  const { logout } = useAuth();
+  const { logout, userId } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -19,21 +19,16 @@ export default function TopBar() {
         </div>
       </div>
       <div className="flex items-center gap-6 ml-8">
-        <div className="flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-lg border border-outline-variant/10">
-          <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Node:</span>
-          <span className="text-[10px] font-bold text-primary uppercase">US-EAST-1</span>
-        </div>
-        
-        <div className="h-8 w-px bg-outline-variant/20 mx-2"></div>
-        
         <div className="group relative">
           <div className="flex items-center gap-3 cursor-pointer">
             <div className="w-8 h-8 rounded-lg overflow-hidden border border-primary/20 bg-surface-container-highest flex items-center justify-center">
               <span className="material-symbols-outlined text-primary text-xl">person</span>
             </div>
             <div className="hidden md:block">
-              <div className="text-xs font-bold text-on-surface">Architect</div>
-              <div className="text-[10px] text-on-surface-variant uppercase tracking-tighter">Pro Account</div>
+              <div className="text-xs font-bold text-on-surface">User</div>
+              <div className="text-[10px] text-on-surface-variant uppercase tracking-tighter">
+                {userId ? `ID: ${userId.substring(0, 8)}` : 'Standard Account'}
+              </div>
             </div>
           </div>
           
