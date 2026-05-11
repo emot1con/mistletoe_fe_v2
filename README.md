@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 🌿 Mistletoe — Frontend Dashboard
 
@@ -393,4 +393,3 @@ The application targets modern evergreen browsers:
 ## License
 
 This project is proprietary. All rights reserved.
-]]>
